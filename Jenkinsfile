@@ -16,7 +16,7 @@ pipeline {
             steps {
                script {
                   docker.withRegistry("https://registry.hub.docker.com", 'dockerhub') {
-                      def customImage = docker.build("indu527/CICD")
+                      def customImage = docker.build("indu527/cicd")
                 customImage.push()
                   }
                }

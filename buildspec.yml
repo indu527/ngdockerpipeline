@@ -15,10 +15,13 @@ phases:
     commands:
       - echo Build started on `date`
       - ng build --prod
+      - tar -cf dist.tar dist
+  
   post_build:
      commands:
-      - aws s3 cp dist s3://${S3_BUCKET} --recursive --include "*.tar.gz"
+      - aws s3 cp dist.tar s3://${S3_BUCKET} --recursive --include "*.tar.gz"
       - echo Build completed on `date`
+  
 artifacts:
   files:
       - '**/*'

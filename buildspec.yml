@@ -17,8 +17,7 @@ phases:
       - ng build --prod
       - mkdir distarch
       - ls -ltr
-      - ls -ltr */scripts
-      - cp -r src/scripts distarch
+      - cp -r scripts distarch
       - cp -r dist/*/** distarch
       - tar -cf distarch.tar distarch
       - cp distarch.tar dist

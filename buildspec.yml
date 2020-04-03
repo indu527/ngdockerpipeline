@@ -14,8 +14,9 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - ng build --prod 
+      - ng build --prod
       - mkdir distarch
+      - ls -ltr
       - cp -r src/scripts distarch
       - cp -r dist/*/** distarch
       - tar -cf distarch.tar distarch

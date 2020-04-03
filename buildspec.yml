@@ -15,8 +15,9 @@ phases:
     commands:
       - echo Build started on `date`
       - ng build --prod 
+      - cd dist
+      - tar -cf dist.tar .
       - echo dist.tar dist
-      - tar -cf dist.tar dist
       - ls -ltr
   
   post_build:

@@ -18,9 +18,9 @@ phases:
       - mkdir distarch
       - ls -ltr
       - cp -r scripts distarch
-      - cp appspec.yml distarch
       - cp -r dist/*/** distarch
       - tar -cf distarch.tar distarch
+      - tar rvf distarch.tar appspec.yml
       - cp distarch.tar dist
       - ls -ltr
 

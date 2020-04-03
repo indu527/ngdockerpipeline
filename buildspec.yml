@@ -18,6 +18,7 @@ phases:
       - mkdir distarch
       - ls -ltr
       - cp -r scripts distarch
+      - cp buildspec.yml distarch
       - cp -r dist/*/** distarch
       - tar -cf distarch.tar distarch
       - cp distarch.tar dist

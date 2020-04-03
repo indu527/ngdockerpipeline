@@ -15,10 +15,16 @@ phases:
     commands:
       - echo Build started on `date`
       - ng build --prod 
-      - tar -cf dist.tar dist/*/**
-      - cp dist.tar dist
-      - ls -ltr
-  
+ 
+  archive:
+     commands:
+     - mkdir distarch
+     - cp -r src/scripts distarc
+     - cp -r dist/*/** distarch
+     - tar -cf distarch.tar distarch
+     - cp distarch.tar dist
+     - ls -ltr
+     
   post_build:
      commands:
       - aws s3 cp dist s3://${S3_BUCKET} --recursive --include "*.tar"

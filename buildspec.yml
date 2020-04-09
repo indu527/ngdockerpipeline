@@ -16,21 +16,19 @@ phases:
       - echo Build started on `date`
       - ng build --prod
       - mkdir distarch
-      - ls -ltr
       - cp -r scripts distarch
       - cp -r dist/*/** distarch
       - tar -cf distarch.tar distarch
       - tar rvf distarch.tar appspec.yml
       - cp distarch.tar dist
-      - ls -ltr
 
   post_build:
      commands:
-      - aws s3 cp dist s3://${S3_BUCKET} --recursive --include "*.tar"
+      - aws s3 cp dist s3://${S3_BUCKET} --recursive --metadata '{"x-amz-meta-application-name":"AngularNew","x-amz-meta-deploymentgroup-name":"AngularEC2Deploy"}' --include "*.tar"
       - echo Build completed on `date`
   
 artifacts:
-  files:
+  files:not
       - '**/*'
   base-directory: 'dist/*/*'
   discard-paths: yes
